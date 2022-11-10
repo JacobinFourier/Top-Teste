@@ -6,7 +6,7 @@ from wtforms import StringField, SubmitField
 from wtforms.validators import DataRequired
 import requests
 
-MOVIE_DB_API_KEY = GET YOUR API KEY FROM themoviedb.org
+MOVIE_DB_API_KEY = "bab2ab5f63765b9b72a44ccf48a6aba8"
 MOVIE_DB_SEARCH_URL = "https://api.themoviedb.org/3/search/movie"
 MOVIE_DB_INFO_URL = "https://api.themoviedb.org/3/movie"
 MOVIE_DB_IMAGE_URL = "https://image.tmdb.org/t/p/w500"
@@ -31,7 +31,9 @@ class Movie(db.Model):
     ranking = db.Column(db.Integer, nullable=True)
     review = db.Column(db.String(250), nullable=True)
     img_url = db.Column(db.String(250), nullable=False)
-db.create_all()
+    
+with app.app_context():
+    db.create_all()
 
 
 class FindMovieForm(FlaskForm):
